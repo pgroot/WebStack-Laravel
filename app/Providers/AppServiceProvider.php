@@ -7,6 +7,7 @@ use App\Site;
 use Encore\Admin\Config\Config;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Routing\UrlGenerator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,8 +16,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(UrlGenerator $url)
     {
+        if (config('app.force_https')) {
+            $url->forceScheme('https');
+        }
         Site::observe(SiteObserver::class);
 
         $table = config('admin.extensions.config.table', 'admin_config');
