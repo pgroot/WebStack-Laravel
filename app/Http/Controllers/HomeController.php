@@ -11,7 +11,7 @@ class HomeController extends Controller
     {
         $categories = Category::with(['children' => function ($query) {
             $query->orderBy('order');
-        }, 'sites'])
+        }, 'sites'])->with('parent')
             ->withCount('children')
             ->orderBy('order')
             ->get();

@@ -20,7 +20,6 @@
                         </a>
                     </li>
                 </ul>
-                <a href="https://github.com/hui-ho/WebStack-Laravel" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
             </nav>
 
             @include('layouts.content')
@@ -32,6 +31,7 @@
     <!-- 锚点平滑移动 -->
     <script type="text/javascript">
     $(document).ready(function() {
+        new ClipboardJS('.copy');
         /*lazyload*/
         $(function() {
             $("img.lazy").lazyload();

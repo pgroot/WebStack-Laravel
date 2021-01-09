@@ -82,7 +82,7 @@ class SiteController extends Controller
         $grid->id('ID');
         $grid->category()->title('分类');
         $grid->title('标题');
-        $grid->thumb('图标')->gallery(['width' => 25, 'height' => 25]);
+        //$grid->thumb('图标')->gallery(['width' => 25, 'height' => 25]);
         $grid->describe('描述')->limit(40);
         $grid->url('地址');
 
@@ -113,7 +113,7 @@ class SiteController extends Controller
         $show->id('ID');
         $show->category_id('分类');
         $show->title('标题');
-        $show->thumb('图标');
+        //$show->thumb('图标');
         $show->describe('Describe');
         $show->url('Url');
         $show->created_at('Created at');
@@ -137,15 +137,16 @@ class SiteController extends Controller
         $form->text('title', '标题')
             ->attribute('autocomplete', 'off')
             ->rules('required|max:50');
-        $form->image('thumb', '图标')
-            ->crop(120, 120)
-            ->uniqueName();
-        $form->text('describe', '描述')
-            ->attribute('autocomplete', 'off')
-            ->rules('required|max:300');
-        $form->url('url', '地址')
+//        $form->image('thumb', '图标')
+//            ->crop(120, 120)
+//            ->uniqueName();
+        $form->text('url', '地址')
             ->attribute('autocomplete', 'off')
             ->rules('required|max:250');
+        $form->textarea('describe', '描述')
+            ->attribute('autocomplete', 'off')
+            ->rules('max:300');
+
 
         $form->footer(function ($footer) {
             $footer->disableViewCheck();
