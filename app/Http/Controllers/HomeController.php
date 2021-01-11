@@ -9,18 +9,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $categories = Category::with(['children' => function ($query) {
-            $query->orderBy('order');
-        }, 'sites'])->with('parent')
-            ->withCount('children')
-            ->orderBy('order')
-            ->get();
-
-        return view('index')->with('categories', $categories);
-    }
-
-    public function about()
-    {
-        return view('about');
+        if(!config('access.private')) {
+            return redirect()->to('/s/share');
+        } else {
+            return view("home");
+        }
     }
 }

@@ -12,4 +12,4 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/about', 'HomeController@about');
+Route::get('/s/{shareKey}', 'ShareController@index');

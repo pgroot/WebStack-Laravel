@@ -85,6 +85,7 @@ class SiteController extends Controller
         //$grid->thumb('图标')->gallery(['width' => 25, 'height' => 25]);
         $grid->describe('描述')->limit(40);
         $grid->url('地址');
+        $grid->access_level('访问权限');
 
         $grid->filter(function ($filter) {
             $filter->disableIdFilter();
@@ -116,6 +117,7 @@ class SiteController extends Controller
         //$show->thumb('图标');
         $show->describe('Describe');
         $show->url('Url');
+        $show->access_level('访问权限');
         $show->created_at('Created at');
         $show->updated_at('Updated at');
 
@@ -143,6 +145,14 @@ class SiteController extends Controller
         $form->text('url', '地址')
             ->attribute('autocomplete', 'off')
             ->rules('required|max:250');
+        $form->radio('access_level', '访问权限')
+             ->options([
+                 'public' => '公开',
+                 'private' => '内网',
+                 'limited' => '白名单限制'
+             ])
+             ->default('public')
+             ->rules('required');
         $form->textarea('describe', '描述')
             ->attribute('autocomplete', 'off')
             ->rules('max:300');

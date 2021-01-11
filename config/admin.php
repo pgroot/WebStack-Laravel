@@ -328,7 +328,7 @@ return [
             'enable' => true,
         ],
         'login-captcha' => [
-            'enable' => true,
+            'enable' => env('APP_CAPTCHA_ENABLED', true),
         ],
         'material-ui' => [
             'enable' => true

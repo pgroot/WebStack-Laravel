@@ -18,8 +18,9 @@ class CreateSitesTable extends Migration
             $table->integer('category_id');
             $table->string('title', 50);
             $table->string('thumb', 200)->nullable();
-            $table->string('describe', 300);
+            $table->string('describe', 300)->nullable();
             $table->string('url', 250);
+            $table->string('access_level', 12)->default('public');
             $table->timestamps();
         });
     }
